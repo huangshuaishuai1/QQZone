@@ -11,8 +11,9 @@ public interface ReplyDao {
     public List<Reply> getReplyList(Topic topic);
 
     // 添加回复
-    public void addReply(Topic topic);
+    public void addReply(Reply reply);
     // 删除回复
     public void deleteReply(Integer id);
+
 
 }

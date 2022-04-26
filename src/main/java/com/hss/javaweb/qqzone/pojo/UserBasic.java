@@ -89,4 +89,8 @@ public class UserBasic {
     public void setFriendsList(List<UserBasic> friendsList) {
         this.friendsList = friendsList;
     }
+
+    public UserBasic(int id) {
+        this.id = id;
+    }
 }

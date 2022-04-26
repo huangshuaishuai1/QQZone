@@ -1,20 +1,19 @@
 package com.hss.javaweb.qqzone.pojo;
-
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Reply {
     private int id;
     private String content;
-    private Date replyDate;
-    private UserBasic author;
-    private Topic topic;
+    private LocalDateTime replyDate;
+    private int author;
+    private int topic;
 
     private HostReply hostReply;
 
     public Reply() {
     }
 
-    public Reply(int id, String content, Date replyDate, UserBasic author, Topic topic) {
+    public Reply(int id, String content, LocalDateTime replyDate, int author, int topic) {
         this.id = id;
         this.content = content;
         this.replyDate = replyDate;
@@ -38,27 +37,27 @@ public class Reply {
         this.content = content;
     }
 
-    public Date getReplyDate() {
+    public LocalDateTime getReplyDate() {
         return replyDate;
     }
 
-    public void setReplyDate(Date replyDate) {
+    public void setReplyDate(LocalDateTime replyDate) {
         this.replyDate = replyDate;
     }
 
-    public UserBasic getAuthor() {
+    public int getAuthor() {
         return author;
     }
 
-    public void setAuthor(UserBasic author) {
+    public void setAuthor(int author) {
         this.author = author;
     }
 
-    public Topic getTopic() {
+    public int getTopic() {
         return topic;
     }
 
-    public void setTopic(Topic topic) {
+    public void setTopic(int topic) {
         this.topic = topic;
     }
 
@@ -68,5 +67,9 @@ public class Reply {
 
     public void setHostReply(HostReply hostReply) {
         this.hostReply = hostReply;
+    }
+
+    public Reply(int id) {
+        this.id = id;
     }
 }

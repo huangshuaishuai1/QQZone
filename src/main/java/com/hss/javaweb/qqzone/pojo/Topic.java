@@ -1,5 +1,6 @@
 package com.hss.javaweb.qqzone.pojo;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -7,14 +8,14 @@ public class Topic {
     private int id;
     private String title;
     private String content;
-    private Date topicDate;
-    private UserBasic author;
+    private LocalDateTime topicDate;
+    private int author;
     private List<Reply> replyList;
 
     public Topic() {
     }
 
-    public Topic(int id, String title, String content, Date topicDate, UserBasic author) {
+    public Topic(int id, String title, String content, LocalDateTime topicDate, int author) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -46,19 +47,19 @@ public class Topic {
         this.content = content;
     }
 
-    public Date getTopicDate() {
+    public LocalDateTime getTopicDate() {
         return topicDate;
     }
 
-    public void setTopicDate(Date topicDate) {
+    public void setTopicDate(LocalDateTime topicDate) {
         this.topicDate = topicDate;
     }
 
-    public UserBasic getAuthor() {
+    public int getAuthor() {
         return author;
     }
 
-    public void setAuthor(UserBasic author) {
+    public void setAuthor(int author) {
         this.author = author;
     }
 
@@ -68,6 +69,10 @@ public class Topic {
 
     public void setReplyList(List<Reply> replyList) {
         this.replyList = replyList;
+    }
+
+    public Topic(int id) {
+        this.id = id;
     }
 }
 

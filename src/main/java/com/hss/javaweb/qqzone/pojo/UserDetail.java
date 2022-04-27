@@ -1,19 +1,19 @@
 package com.hss.javaweb.qqzone.pojo;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class UserDetail {
     private int id;
     private String realName;
     private String tel;
     private String email;
-    private Date birth;
+    private LocalDateTime birth;
     private String star;
 
     public UserDetail() {
     }
 
-    public UserDetail(int id, String realName, String tel, String email, Date birth, String star) {
+    public UserDetail(int id, String realName, String tel, String email, LocalDateTime birth, String star) {
         this.id = id;
         this.realName = realName;
         this.tel = tel;
@@ -54,11 +54,11 @@ public class UserDetail {
         this.email = email;
     }
 
-    public Date getBirth() {
+    public LocalDateTime getBirth() {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(LocalDateTime birth) {
         this.birth = birth;
     }
 

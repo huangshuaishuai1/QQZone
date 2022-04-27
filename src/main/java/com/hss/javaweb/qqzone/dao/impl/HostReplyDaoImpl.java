@@ -4,7 +4,9 @@ import com.hss.javaweb.myssm.basedao.BaseDao;
 import com.hss.javaweb.qqzone.dao.HostReplyDao;
 import com.hss.javaweb.qqzone.pojo.HostReply;
 import com.hss.javaweb.qqzone.pojo.Reply;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class HostReplyDaoImpl extends BaseDao<HostReply> implements HostReplyDao {
     @Override
     public HostReply getHostReply(Reply reply) {

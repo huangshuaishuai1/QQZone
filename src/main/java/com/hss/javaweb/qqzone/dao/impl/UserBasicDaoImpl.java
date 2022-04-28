@@ -3,9 +3,11 @@ package com.hss.javaweb.qqzone.dao.impl;
 import com.hss.javaweb.myssm.basedao.BaseDao;
 import com.hss.javaweb.qqzone.dao.UserBasicDao;
 import com.hss.javaweb.qqzone.pojo.UserBasic;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class UserBasicDaoImpl extends BaseDao<UserBasic> implements UserBasicDao {
     @Override
     public UserBasic getUserBasic(String loginId, String pwd) {

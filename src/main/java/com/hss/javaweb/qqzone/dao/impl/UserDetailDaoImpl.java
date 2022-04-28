@@ -4,7 +4,9 @@ import com.hss.javaweb.myssm.basedao.BaseDao;
 import com.hss.javaweb.qqzone.dao.UserDetailDao;
 import com.hss.javaweb.qqzone.pojo.UserBasic;
 import com.hss.javaweb.qqzone.pojo.UserDetail;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserDetailDaoImpl extends BaseDao<UserDetail> implements UserDetailDao {
     @Override
     public void addUserDetail(UserDetail userDetail) {

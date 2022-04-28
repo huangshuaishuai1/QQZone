@@ -4,9 +4,11 @@ import com.hss.javaweb.myssm.basedao.BaseDao;
 import com.hss.javaweb.qqzone.dao.TopicDao;
 import com.hss.javaweb.qqzone.pojo.Topic;
 import com.hss.javaweb.qqzone.pojo.UserBasic;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class TopicDaoImpl extends BaseDao<Topic> implements TopicDao {
     @Override
     public List<Topic> getTopicList(UserBasic userBasic) {

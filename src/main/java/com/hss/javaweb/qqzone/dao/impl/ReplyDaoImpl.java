@@ -4,9 +4,11 @@ import com.hss.javaweb.myssm.basedao.BaseDao;
 import com.hss.javaweb.qqzone.dao.ReplyDao;
 import com.hss.javaweb.qqzone.pojo.Reply;
 import com.hss.javaweb.qqzone.pojo.Topic;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class ReplyDaoImpl extends BaseDao<Reply> implements ReplyDao {
     @Override
     public List<Reply> getReplyList(Topic topic) {

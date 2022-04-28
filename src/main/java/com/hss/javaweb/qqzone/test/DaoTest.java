@@ -3,13 +3,23 @@ package com.hss.javaweb.qqzone.test;
 import com.hss.javaweb.qqzone.dao.*;
 import com.hss.javaweb.qqzone.dao.impl.*;
 import com.hss.javaweb.qqzone.pojo.*;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class DaoTest {
+    @Test
+    public void test1() {
+        String path = "http://localhost:8080/QQZone/user.do";
+        path = path.substring(1);
+        int lastDotIndex = path.lastIndexOf(".do");
+        path = path.substring(0,lastDotIndex);
+        System.out.println(path);
+    }
+
     @Test
     public void testUserDetail1() {
         UserDetailDao userDetailDao = new UserDetailDaoImpl();

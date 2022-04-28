@@ -6,7 +6,11 @@
 
     <groupId>com.hss.javaweb</groupId>
     <artifactId>QQZone</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>version01</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

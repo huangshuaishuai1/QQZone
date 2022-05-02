@@ -11,6 +11,7 @@ public interface UserBasicDao {
     // 获取指定用户的所有好友列表
     public List<UserBasic> getUserBasicList(UserBasic userBasic);
 
-
+    // 根据Id获取用户信息
+    public UserBasic getUserBasicById(Integer id);
 
 }

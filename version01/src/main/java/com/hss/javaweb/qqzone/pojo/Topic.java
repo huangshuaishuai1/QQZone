@@ -11,6 +11,7 @@ public class Topic {
     private int author;
     private List<Reply> replyList;
 
+    private UserBasic authorObj;
     public Topic() {
     }
 
@@ -20,6 +21,14 @@ public class Topic {
         this.content = content;
         this.topicDate = topicDate;
         this.author = author;
+    }
+
+    public UserBasic getAuthorObj() {
+        return authorObj;
+    }
+
+    public void setAuthorObj(UserBasic authorObj) {
+        this.authorObj = authorObj;
     }
 
     public int getId() {

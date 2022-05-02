@@ -21,4 +21,10 @@ public class UserBasicDaoImpl extends BaseDao<UserBasic> implements UserBasicDao
         return super.getAllBeans(sql,UserBasic.class,userBasic.getId());
     }
 
+    @Override
+    public UserBasic getUserBasicById(Integer id) {
+        String sql = "select * from t_user_basic where id=?";
+        return super.getSingleBean(sql,UserBasic.class,id);
+    }
+
 }

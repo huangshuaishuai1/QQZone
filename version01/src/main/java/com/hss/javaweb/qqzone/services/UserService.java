@@ -28,4 +28,8 @@ public class UserService {
             return null;
         }
     }
+
+    public UserBasic getUserBasic(Integer id) {
+        return userBasicDao.getUserBasicById(id);
+    }
 }

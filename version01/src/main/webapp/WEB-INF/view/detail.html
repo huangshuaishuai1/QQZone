@@ -1,22 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/detail.css">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/detail.css}">
     <script language="JavaScript">
         function showDelImg(imgId){
-            document.getElementById(imgId).style.display='inline';
+            var obj = document.getElementById(imgId) ;
+            if(obj){
+                obj.style.display='inline';
+            }
+
         }
         function hiddenDelImg(imgId){
-            document.getElementById(imgId).style.display='none';
+            var obj = document.getElementById(imgId) ;
+            if(obj){
+                obj.style.display='none';
+            }
+        }
+        function delReply(replyId , topicId){
+            if(window.confirm("是否确认删除？")){
+                window.location.href='reply.do?operate=delReply&replyId='+replyId+'&topicId='+topicId;
+            }
         }
     </script>
 </head>
 <body>
     <div id="div_back_to_topic_list">
-        <a href="main.html">返回日志列表</a>
+        <a href="main.html">返回日志列表 </a>
     </div>
     <div id="div_topic_detail">
         <div id="div_topic_info">
@@ -24,21 +36,60 @@
                 <tr>
                     <td rowspan="2" class="w14 h96">
                         <div class="h64 center " style="width:100%;">
-                            <img class="img56 " src="../imgs/qf.png"/>
+                            <img class="img56 " th:src="@{|/imgs/${session.topicDetail.authorObj.headImg}|}"/>
                         </div>
-                        <div class="h32 center" style="width:100%;">乔峰</div>
+                        <div class="h32 center" style="width:100%;" th:text="${session.topicDetail.authorObj.nickName}">乔峰</div>
                     </td>
                     <td class="topic_title" onmousemove="showDelImg('img01')" onmouseout="hiddenDelImg('img01')">
-                        <img id="img01" style="float: right;margin-top:2px;margin-right:2px;display: none;" src="../imgs/del.jpg" style="width:24px;height: 24px;"/>
-                        <span>《萧某今天就和天下群雄决一死战，你们一起上吧！》</span>
-                        <span class="title_date_right">2021-09-01 12:30:55</span>
+                        <img id="img01" style="float: right;margin-top:2px;margin-right:2px;display: none;width:24px;height: 24px;" th:src="@{/imgs/del.jpg}"/>
+                        <span th:text="|《 ${session.topicDetail.title}》|">《萧某今天就和天下群雄决一死战，你们一起上吧！》</span> <!--这里是title-->
+                        <span class="title_date_right" th:text="${session.topicDetail.topicDate}">2021-09-01 12:30:55</span> <!--这里是 Data-->
                     </td>
                 </tr>
                 <tr>
-                    <td>杀母大仇, 岂可当作买卖交易？此仇能报便报, 如不能报, 则我父子毕命于此便了。这等肮脏之事, 岂是我萧氏父子所屑为？</td>
+                    <td th:text="${session.topicDetail.content}">杀母大仇, 岂可当作买卖交易？此仇能报便报, 如不能报, 则我父子毕命于此便了。这等肮脏之事, 岂是我萧氏父子所屑为？</td>
                 </tr>
             </table>
         </div>
+
+<!--        &lt;!&ndash;循环获得回复&ndash;&gt;-->
+<!--        <div id="div_reply_list">-->
+<!--            <table class="tbl_reply_info">-->
+<!--                <tr th:if="${#lists.isEmpty(session.topicDetail.replyList)}">-->
+<!--                    <td>暂无回复</td>-->
+<!--                </tr>-->
+<!--                <tr th:unless="${#lists.isEmpty(session.topicDetail.replyList)}" th:each="reply : ${session.topicDetail.replyList}">-->
+<!--                    <td rowspan="2" class="w14 h88">-->
+<!--                        <div class="h56 center" style="width:100%;">-->
+<!--                            <img class="img48" th:src="@{|/img/h${reply.author}.jpeg|}"/>-->
+<!--                        </div>-->
+<!--                        <div class="h32 center" style="width:100%;">段誉</div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td rowspan="2" class="w14 h88">-->
+<!--                        <div class="h56 center" style="width:100%;">-->
+<!--                            <img class="img48" src="../imgs/dy.png"/>-->
+<!--                        </div>-->
+<!--                        <div class="h32 center" style="width:100%;">段誉</div>-->
+<!--                    </td>-->
+<!--                    <td class="reply_title" onmouseover="showDelImg('img02')" onmouseout="hiddenDelImg('img02')">-->
+<!--                        <span>回复：萧某今天就和天下群雄决一死战，你们一起上吧！</span>-->
+<!--                        <img id="img02" style="float: right;margin-top:2px;margin-right:2px;display: none;" th:src="/imgs/del.jpg" style="width:24px;height: 24px;"/>-->
+<!--                        <span class="title_date_right">2021-09-01 14:35:15</span>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <span>你可曾见过边关之上、宋辽相互仇杀的惨状？可曾见过宋人辽人妻离子散、家破人亡的情景？宋辽之间好容易罢兵数十年, 倘若刀兵再起, 契丹铁骑侵入南朝, 你可知将有多少宋人惨遭横死？多少辽人死于非命？!</span><br/>-->
+<!--                        <ul style="width: 96%;border:1px dotted lightgray;list-style-type: none;padding-left:8px;padding-right:8px;">-->
+<!--                            <li style="color:#6e0000;font-size:12px;width: 100%;border:0px solid red;">你以为我是慕容复的人，所以和我比试？段兄弟年纪轻轻，就有如此武学修为，实属罕见！武林早已盛传大理段氏有一门绝学，叫六脉神剑，能以无形剑气杀人，果然真有此门神功！</li>-->
+<!--                            <li style="color:#6e0000;font-size:12px;width:100%;border:0px solid blue;text-align: right;margin-right: 8px;">主人回复于2021/10/01 11:50:30</li>-->
+<!--                        </ul>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table>-->
+        <!--
         <div id="div_reply_list">
             <table class="tbl_reply_info">
                 <tr>
@@ -50,7 +101,7 @@
                     </td>
                     <td class="reply_title" onmouseover="showDelImg('img02')" onmouseout="hiddenDelImg('img02')">
                         <span>回复：萧某今天就和天下群雄决一死战，你们一起上吧！</span>
-                        <img id="img02" style="float: right;margin-top:2px;margin-right:2px;display: none;" src="../imgs/del.jpg" style="width:24px;height: 24px;"/>
+                        <img id="img02" style="float: right;margin-top:2px;margin-right:2px;display: none;" th:src="/imgs/del.jpg" style="width:24px;height: 24px;"/>
                         <span class="title_date_right">2021-09-01 14:35:15</span>
                     </td>
                 </tr>
@@ -122,6 +173,7 @@
             </table>
         </div>
     </div>
+
     <div id="div_add_reply">
         <p class="add_reply_title">添加回复</p>
         <form action="" method="post">
@@ -142,6 +194,7 @@
                 </tr>
             </table>
         </form>
+    </div> -->
     </div>
 </body>
 </html>

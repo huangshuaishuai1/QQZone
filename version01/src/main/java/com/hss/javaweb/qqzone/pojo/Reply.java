@@ -7,11 +7,12 @@ public class Reply {
     private LocalDateTime replyDate;
     private int author;
     private int topic;
-
+    private UserBasic authorObj;
     private HostReply hostReply;
 
     public Reply() {
     }
+
 
     public Reply(int id, String content, LocalDateTime replyDate, int author, int topic) {
         this.id = id;
@@ -19,6 +20,14 @@ public class Reply {
         this.replyDate = replyDate;
         this.author = author;
         this.topic = topic;
+    }
+
+    public UserBasic getAuthorObj() {
+        return authorObj;
+    }
+
+    public void setAuthorObj(UserBasic authorObj) {
+        this.authorObj = authorObj;
     }
 
     public int getId() {

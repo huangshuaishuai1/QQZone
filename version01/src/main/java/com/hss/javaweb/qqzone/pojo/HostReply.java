@@ -11,6 +11,7 @@ public class HostReply {
     private int author;
     private int reply;
 
+    private UserBasic authorObj;
     public HostReply() {
     }
 
@@ -20,6 +21,14 @@ public class HostReply {
         this.hostReplyDate = hostReplyDate;
         this.author = author;
         this.reply = reply;
+    }
+
+    public UserBasic getAuthorObj() {
+        return authorObj;
+    }
+
+    public void setAuthorObj(UserBasic authorObj) {
+        this.authorObj = authorObj;
     }
 
     public int getId() {

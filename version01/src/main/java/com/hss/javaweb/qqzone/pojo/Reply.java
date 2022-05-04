@@ -22,6 +22,13 @@ public class Reply {
         this.topic = topic;
     }
 
+    public Reply(String content, LocalDateTime replyDate, int topic, int author) {
+        this.content = content;
+        this.replyDate = replyDate;
+        this.topic = topic;
+        this.author = author;
+    }
+
     public UserBasic getAuthorObj() {
         return authorObj;
     }

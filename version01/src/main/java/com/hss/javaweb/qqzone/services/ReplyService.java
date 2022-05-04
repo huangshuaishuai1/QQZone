@@ -27,4 +27,10 @@ public class ReplyService {
         return replyList;
     }
 
+    public void addReply(Reply reply){
+        replyDao.addReply(reply);
+    }
+    public void deleteReply(Integer id) {
+        replyDao.deleteReply(id);
+    }
 }
